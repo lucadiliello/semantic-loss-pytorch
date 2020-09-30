@@ -1,0 +1,21 @@
+c This file was generated with the constraints_to_cnf module in this project.
+c Starting from file './sympys/SAT_seed1337_variables38_clauses15_maxperclause24_nmodels0_multinomial3_simplifyFalse/SAT_seed1337_variables38_clauses15_maxperclause24_nmodels0_multinomial3_simplifyFalse.sympy'.
+c There are 83 variables present in the constraints, and 114 total variables, given by the shape [114].
+c
+p cnf 114 15
+88 0
+90 0
+5 56 91 -114 0
+57 -111 -7 -88 0
+106 12 97 -28 -82 0
+3 22 38 -110 -87 0
+113 14 35 37 47 8 -18 0
+114 23 30 34 -31 -38 -10 0
+2 42 68 81 -42 -48 -50 -64 -76 0
+104 105 113 5 45 58 90 -20 -67 -9 -10 0
+38 62 65 96 -113 -58 -68 -70 -77 -10 0
+24 79 91 -26 -39 -40 -46 -49 -6 -54 -95 0
+15 76 84 87 94 95 -2 -5 -41 -6 -66 -79 -9 0
+108 53 54 60 66 75 87 -104 -107 -109 -12 -25 -39 -54 0
+14 18 21 26 48 65 72 83 85 -102 -12 -22 -27 -42 -43 -48 -64 -69 -88 -93 -100 0
+

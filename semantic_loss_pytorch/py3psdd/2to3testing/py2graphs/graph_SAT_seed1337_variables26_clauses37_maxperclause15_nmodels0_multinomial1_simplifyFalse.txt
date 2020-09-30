@@ -1,0 +1,6999 @@
+node {
+  name: "input_probabilities"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: -1
+        }
+        dim {
+          size: 26
+        }
+      }
+    }
+  }
+}
+node {
+  name: "unstack"
+  op: "Unpack"
+  input: "input_probabilities"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 1
+    }
+  }
+  attr {
+    key: "num"
+    value {
+      i: 26
+    }
+  }
+}
+node {
+  name: "sub/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub"
+  op: "Sub"
+  input: "sub/x"
+  input: "unstack"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_1/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_1"
+  op: "Sub"
+  input: "sub_1/x"
+  input: "unstack:1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_2/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_2"
+  op: "Sub"
+  input: "sub_2/x"
+  input: "unstack:2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_3/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_3"
+  op: "Sub"
+  input: "sub_3/x"
+  input: "unstack:3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_4/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_4"
+  op: "Sub"
+  input: "sub_4/x"
+  input: "unstack:4"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_5/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_5"
+  op: "Sub"
+  input: "sub_5/x"
+  input: "unstack:5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_6/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_6"
+  op: "Sub"
+  input: "sub_6/x"
+  input: "unstack:6"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_7/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_7"
+  op: "Sub"
+  input: "sub_7/x"
+  input: "unstack:7"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_8/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_8"
+  op: "Sub"
+  input: "sub_8/x"
+  input: "unstack:8"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_9/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_9"
+  op: "Sub"
+  input: "sub_9/x"
+  input: "unstack:9"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_10/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_10"
+  op: "Sub"
+  input: "sub_10/x"
+  input: "unstack:10"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_11/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_11"
+  op: "Sub"
+  input: "sub_11/x"
+  input: "unstack:11"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_12/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_12"
+  op: "Sub"
+  input: "sub_12/x"
+  input: "unstack:12"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_13/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_13"
+  op: "Sub"
+  input: "sub_13/x"
+  input: "unstack:13"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_14/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_14"
+  op: "Sub"
+  input: "sub_14/x"
+  input: "unstack:14"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_15/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_15"
+  op: "Sub"
+  input: "sub_15/x"
+  input: "unstack:15"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_16/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_16"
+  op: "Sub"
+  input: "sub_16/x"
+  input: "unstack:16"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_17/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_17"
+  op: "Sub"
+  input: "sub_17/x"
+  input: "unstack:17"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_18/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_18"
+  op: "Sub"
+  input: "sub_18/x"
+  input: "unstack:18"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_19/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_19"
+  op: "Sub"
+  input: "sub_19/x"
+  input: "unstack:19"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_20/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_20"
+  op: "Sub"
+  input: "sub_20/x"
+  input: "unstack:20"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_21/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_21"
+  op: "Sub"
+  input: "sub_21/x"
+  input: "unstack:21"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_22/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_22"
+  op: "Sub"
+  input: "sub_22/x"
+  input: "unstack:22"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_23/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_23"
+  op: "Sub"
+  input: "sub_23/x"
+  input: "unstack:23"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_24/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_24"
+  op: "Sub"
+  input: "sub_24/x"
+  input: "unstack:24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "sub_25/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "sub_25"
+  op: "Sub"
+  input: "sub_25/x"
+  input: "unstack:25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul"
+  op: "Mul"
+  input: "unstack:17"
+  input: "Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_1"
+  op: "Mul"
+  input: "sub_17"
+  input: "unstack:18"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN"
+  op: "AddN"
+  input: "Mul"
+  input: "Mul_1"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_2"
+  op: "Mul"
+  input: "Const_1"
+  input: "Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_3"
+  op: "Mul"
+  input: "unstack:19"
+  input: "AddN"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_4"
+  op: "Mul"
+  input: "sub_19"
+  input: "Mul_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_1"
+  op: "AddN"
+  input: "Mul_3"
+  input: "Mul_4"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_3"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_5"
+  op: "Mul"
+  input: "unstack:14"
+  input: "Const_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_6"
+  op: "Mul"
+  input: "sub_14"
+  input: "Const_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_2"
+  op: "AddN"
+  input: "Mul_5"
+  input: "Mul_6"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_4"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_5"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_7"
+  op: "Mul"
+  input: "unstack:4"
+  input: "sub_5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_8"
+  op: "Mul"
+  input: "sub_4"
+  input: "Const_5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_3"
+  op: "AddN"
+  input: "Mul_7"
+  input: "Mul_8"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_6"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_9"
+  op: "Mul"
+  input: "unstack:6"
+  input: "Const_6"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_10"
+  op: "Mul"
+  input: "sub_6"
+  input: "sub"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_4"
+  op: "AddN"
+  input: "Mul_9"
+  input: "Mul_10"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_7"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_8"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_9"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_11"
+  op: "Mul"
+  input: "Const_8"
+  input: "Const_9"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_10"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_12"
+  op: "Mul"
+  input: "Mul_11"
+  input: "Const_10"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_11"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_13"
+  op: "Mul"
+  input: "Mul_12"
+  input: "Const_11"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_14"
+  op: "Mul"
+  input: "Const_7"
+  input: "Mul_13"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_12"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_13"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_14"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_15"
+  op: "Mul"
+  input: "Const_13"
+  input: "Const_14"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_15"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_16"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_17"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_18"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_16"
+  op: "Mul"
+  input: "Const_17"
+  input: "Const_18"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_19"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_20"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_21"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_22"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_17"
+  op: "Mul"
+  input: "Const_21"
+  input: "Const_22"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_18"
+  op: "Mul"
+  input: "Const_20"
+  input: "Mul_17"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_19"
+  op: "Mul"
+  input: "Const_19"
+  input: "Mul_18"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_20"
+  op: "Mul"
+  input: "Mul_16"
+  input: "Mul_19"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_21"
+  op: "Mul"
+  input: "Const_16"
+  input: "Mul_20"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_22"
+  op: "Mul"
+  input: "Const_15"
+  input: "Mul_21"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_23"
+  op: "Mul"
+  input: "Mul_15"
+  input: "Mul_22"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_24"
+  op: "Mul"
+  input: "Const_12"
+  input: "Mul_23"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_25"
+  op: "Mul"
+  input: "Mul_14"
+  input: "Mul_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_23"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_26"
+  op: "Mul"
+  input: "unstack:6"
+  input: "Const_23"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_27"
+  op: "Mul"
+  input: "sub_6"
+  input: "unstack"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_5"
+  op: "AddN"
+  input: "Mul_26"
+  input: "Mul_27"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_24"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_28"
+  op: "Mul"
+  input: "unstack:22"
+  input: "Const_9"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_29"
+  op: "Mul"
+  input: "sub_22"
+  input: "Const_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_6"
+  op: "AddN"
+  input: "Mul_28"
+  input: "Mul_29"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_30"
+  op: "Mul"
+  input: "unstack:22"
+  input: "Const_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_31"
+  op: "Mul"
+  input: "sub_22"
+  input: "Const_9"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_7"
+  op: "AddN"
+  input: "Mul_30"
+  input: "Mul_31"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_32"
+  op: "Mul"
+  input: "AddN_6"
+  input: "Const_10"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_33"
+  op: "Mul"
+  input: "AddN_7"
+  input: "sub_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_8"
+  op: "AddN"
+  input: "Mul_32"
+  input: "Mul_33"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_25"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_34"
+  op: "Mul"
+  input: "AddN_6"
+  input: "Const_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_35"
+  op: "Mul"
+  input: "AddN_7"
+  input: "unstack:24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_9"
+  op: "AddN"
+  input: "Mul_34"
+  input: "Mul_35"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_26"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_36"
+  op: "Mul"
+  input: "AddN_8"
+  input: "Const_11"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_37"
+  op: "Mul"
+  input: "AddN_9"
+  input: "Const_26"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_10"
+  op: "AddN"
+  input: "Mul_36"
+  input: "Mul_37"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_38"
+  op: "Mul"
+  input: "Const_7"
+  input: "AddN_10"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_39"
+  op: "Mul"
+  input: "AddN_8"
+  input: "Const_26"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_40"
+  op: "Mul"
+  input: "AddN_9"
+  input: "unstack:7"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_11"
+  op: "AddN"
+  input: "Mul_39"
+  input: "Mul_40"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_41"
+  op: "Mul"
+  input: "Const_7"
+  input: "AddN_11"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_27"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_42"
+  op: "Mul"
+  input: "unstack:8"
+  input: "sub_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_43"
+  op: "Mul"
+  input: "sub_8"
+  input: "Const_27"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_12"
+  op: "AddN"
+  input: "Mul_42"
+  input: "Mul_43"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_28"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_44"
+  op: "Mul"
+  input: "unstack:20"
+  input: "unstack:21"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_45"
+  op: "Mul"
+  input: "sub_20"
+  input: "Const_28"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_13"
+  op: "AddN"
+  input: "Mul_44"
+  input: "Mul_45"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_46"
+  op: "Mul"
+  input: "unstack:25"
+  input: "unstack:11"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_47"
+  op: "Mul"
+  input: "sub_25"
+  input: "Const_22"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_14"
+  op: "AddN"
+  input: "Mul_46"
+  input: "Mul_47"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_48"
+  op: "Mul"
+  input: "Const_20"
+  input: "AddN_14"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_49"
+  op: "Mul"
+  input: "unstack:1"
+  input: "Mul_17"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_50"
+  op: "Mul"
+  input: "sub_1"
+  input: "AddN_14"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_15"
+  op: "AddN"
+  input: "Mul_49"
+  input: "Mul_50"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_51"
+  op: "Mul"
+  input: "unstack:12"
+  input: "Mul_48"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_52"
+  op: "Mul"
+  input: "sub_12"
+  input: "AddN_15"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_16"
+  op: "AddN"
+  input: "Mul_51"
+  input: "Mul_52"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_53"
+  op: "Mul"
+  input: "unstack:20"
+  input: "Const_28"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_54"
+  op: "Mul"
+  input: "sub_20"
+  input: "unstack:21"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_17"
+  op: "AddN"
+  input: "Mul_53"
+  input: "Mul_54"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_55"
+  op: "Mul"
+  input: "Const_19"
+  input: "Mul_48"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_56"
+  op: "Mul"
+  input: "Const_17"
+  input: "sub_21"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_57"
+  op: "Mul"
+  input: "AddN_13"
+  input: "AddN_16"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_58"
+  op: "Mul"
+  input: "AddN_17"
+  input: "Mul_55"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_59"
+  op: "Mul"
+  input: "Mul_56"
+  input: "Mul_19"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_18"
+  op: "AddN"
+  input: "Mul_57"
+  input: "Mul_58"
+  input: "Mul_59"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_60"
+  op: "Mul"
+  input: "Const_16"
+  input: "AddN_18"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_61"
+  op: "Mul"
+  input: "unstack:9"
+  input: "Mul_60"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_62"
+  op: "Mul"
+  input: "sub_9"
+  input: "Mul_21"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_19"
+  op: "AddN"
+  input: "Mul_61"
+  input: "Mul_62"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_63"
+  op: "Mul"
+  input: "unstack:8"
+  input: "unstack:2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_64"
+  op: "Mul"
+  input: "sub_8"
+  input: "Const_14"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_20"
+  op: "AddN"
+  input: "Mul_63"
+  input: "Mul_64"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_65"
+  op: "Mul"
+  input: "Const_15"
+  input: "Mul_60"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_66"
+  op: "Mul"
+  input: "AddN_12"
+  input: "AddN_19"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_67"
+  op: "Mul"
+  input: "AddN_20"
+  input: "Mul_65"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_21"
+  op: "AddN"
+  input: "Mul_66"
+  input: "Mul_67"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_68"
+  op: "Mul"
+  input: "Mul_15"
+  input: "Mul_65"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_69"
+  op: "Mul"
+  input: "unstack:16"
+  input: "AddN_21"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_70"
+  op: "Mul"
+  input: "sub_16"
+  input: "Mul_68"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_22"
+  op: "AddN"
+  input: "Mul_69"
+  input: "Mul_70"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_71"
+  op: "Mul"
+  input: "AddN_8"
+  input: "Const_26"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_72"
+  op: "Mul"
+  input: "AddN_9"
+  input: "sub_7"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_23"
+  op: "AddN"
+  input: "Mul_71"
+  input: "Mul_72"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_73"
+  op: "Mul"
+  input: "Const_7"
+  input: "AddN_23"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_74"
+  op: "Mul"
+  input: "unstack:8"
+  input: "Const_14"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_75"
+  op: "Mul"
+  input: "sub_8"
+  input: "Const_27"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_24"
+  op: "AddN"
+  input: "Mul_74"
+  input: "Mul_75"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_76"
+  op: "Mul"
+  input: "unstack:8"
+  input: "Const_27"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_77"
+  op: "Mul"
+  input: "sub_8"
+  input: "Const_14"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_25"
+  op: "AddN"
+  input: "Mul_76"
+  input: "Mul_77"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_78"
+  op: "Mul"
+  input: "Const_17"
+  input: "unstack:21"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_79"
+  op: "Mul"
+  input: "Const_21"
+  input: "unstack:11"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_80"
+  op: "Mul"
+  input: "Const_20"
+  input: "Mul_79"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_81"
+  op: "Mul"
+  input: "Const_19"
+  input: "Mul_80"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_82"
+  op: "Mul"
+  input: "Mul_56"
+  input: "Mul_19"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_83"
+  op: "Mul"
+  input: "Mul_78"
+  input: "Mul_81"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_26"
+  op: "AddN"
+  input: "Mul_82"
+  input: "Mul_83"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_84"
+  op: "Mul"
+  input: "unstack:10"
+  input: "AddN_26"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_85"
+  op: "Mul"
+  input: "sub_10"
+  input: "Mul_20"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_27"
+  op: "AddN"
+  input: "Mul_84"
+  input: "Mul_85"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_86"
+  op: "Mul"
+  input: "Const_15"
+  input: "AddN_27"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_87"
+  op: "Mul"
+  input: "AddN_24"
+  input: "Mul_22"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_88"
+  op: "Mul"
+  input: "AddN_25"
+  input: "Mul_86"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_28"
+  op: "AddN"
+  input: "Mul_87"
+  input: "Mul_88"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_89"
+  op: "Mul"
+  input: "Const_12"
+  input: "AddN_28"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_90"
+  op: "Mul"
+  input: "Mul_38"
+  input: "Mul_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_91"
+  op: "Mul"
+  input: "Mul_41"
+  input: "AddN_22"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_92"
+  op: "Mul"
+  input: "Mul_73"
+  input: "Mul_89"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_29"
+  op: "AddN"
+  input: "Mul_90"
+  input: "Mul_91"
+  input: "Mul_92"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_93"
+  op: "Mul"
+  input: "AddN_4"
+  input: "Mul_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_94"
+  op: "Mul"
+  input: "AddN_5"
+  input: "AddN_29"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_30"
+  op: "AddN"
+  input: "Mul_93"
+  input: "Mul_94"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_95"
+  op: "Mul"
+  input: "unstack:4"
+  input: "unstack:5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_96"
+  op: "Mul"
+  input: "sub_4"
+  input: "Const_5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_31"
+  op: "AddN"
+  input: "Mul_95"
+  input: "Mul_96"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_97"
+  op: "Mul"
+  input: "Const_12"
+  input: "Mul_68"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_98"
+  op: "Mul"
+  input: "Mul_38"
+  input: "Mul_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_99"
+  op: "Mul"
+  input: "Mul_41"
+  input: "Mul_97"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_100"
+  op: "Mul"
+  input: "Mul_73"
+  input: "Mul_89"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_32"
+  op: "AddN"
+  input: "Mul_98"
+  input: "Mul_99"
+  input: "Mul_100"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_101"
+  op: "Mul"
+  input: "AddN_4"
+  input: "Mul_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_102"
+  op: "Mul"
+  input: "AddN_5"
+  input: "AddN_32"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_33"
+  op: "AddN"
+  input: "Mul_101"
+  input: "Mul_102"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_103"
+  op: "Mul"
+  input: "unstack:4"
+  input: "Const_5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_104"
+  op: "Mul"
+  input: "sub_4"
+  input: "unstack:5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_34"
+  op: "AddN"
+  input: "Mul_103"
+  input: "Mul_104"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_105"
+  op: "Mul"
+  input: "unstack:6"
+  input: "Const_6"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_106"
+  op: "Mul"
+  input: "sub_6"
+  input: "unstack"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_35"
+  op: "AddN"
+  input: "Mul_105"
+  input: "Mul_106"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_107"
+  op: "Mul"
+  input: "unstack:6"
+  input: "Const_23"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_108"
+  op: "Mul"
+  input: "sub_6"
+  input: "Const_6"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_36"
+  op: "AddN"
+  input: "Mul_107"
+  input: "Mul_108"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_109"
+  op: "Mul"
+  input: "unstack:10"
+  input: "Mul_20"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_110"
+  op: "Mul"
+  input: "sub_10"
+  input: "AddN_18"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_37"
+  op: "AddN"
+  input: "Mul_109"
+  input: "Mul_110"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_111"
+  op: "Mul"
+  input: "Const_15"
+  input: "AddN_37"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_112"
+  op: "Mul"
+  input: "Mul_15"
+  input: "Mul_111"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_113"
+  op: "Mul"
+  input: "Const_12"
+  input: "Mul_112"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_114"
+  op: "Mul"
+  input: "unstack:25"
+  input: "Const_22"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_115"
+  op: "Mul"
+  input: "sub_25"
+  input: "unstack:11"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_38"
+  op: "AddN"
+  input: "Mul_114"
+  input: "Mul_115"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_116"
+  op: "Mul"
+  input: "Const_20"
+  input: "AddN_38"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_117"
+  op: "Mul"
+  input: "Const_19"
+  input: "Mul_116"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_118"
+  op: "Mul"
+  input: "Mul_56"
+  input: "Mul_19"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_119"
+  op: "Mul"
+  input: "Mul_78"
+  input: "Mul_117"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_39"
+  op: "AddN"
+  input: "Mul_118"
+  input: "Mul_119"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_120"
+  op: "Mul"
+  input: "unstack:10"
+  input: "AddN_39"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_121"
+  op: "Mul"
+  input: "sub_10"
+  input: "Mul_20"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_40"
+  op: "AddN"
+  input: "Mul_120"
+  input: "Mul_121"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_122"
+  op: "Mul"
+  input: "Const_15"
+  input: "AddN_40"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_123"
+  op: "Mul"
+  input: "AddN_24"
+  input: "Mul_22"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_124"
+  op: "Mul"
+  input: "AddN_25"
+  input: "Mul_122"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_41"
+  op: "AddN"
+  input: "Mul_123"
+  input: "Mul_124"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_125"
+  op: "Mul"
+  input: "Const_12"
+  input: "AddN_41"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_126"
+  op: "Mul"
+  input: "Mul_38"
+  input: "Mul_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_127"
+  op: "Mul"
+  input: "Mul_41"
+  input: "Mul_113"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_128"
+  op: "Mul"
+  input: "Mul_73"
+  input: "Mul_125"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_42"
+  op: "AddN"
+  input: "Mul_126"
+  input: "Mul_127"
+  input: "Mul_128"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_129"
+  op: "Mul"
+  input: "AddN_4"
+  input: "Mul_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_130"
+  op: "Mul"
+  input: "AddN_35"
+  input: "AddN_32"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_131"
+  op: "Mul"
+  input: "AddN_36"
+  input: "AddN_42"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_43"
+  op: "AddN"
+  input: "Mul_129"
+  input: "Mul_130"
+  input: "Mul_131"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_132"
+  op: "Mul"
+  input: "unstack:4"
+  input: "Const_5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_133"
+  op: "Mul"
+  input: "sub_4"
+  input: "sub_5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_44"
+  op: "AddN"
+  input: "Mul_132"
+  input: "Mul_133"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_134"
+  op: "Mul"
+  input: "unstack:9"
+  input: "AddN_37"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_135"
+  op: "Mul"
+  input: "sub_9"
+  input: "Mul_21"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_45"
+  op: "AddN"
+  input: "Mul_134"
+  input: "Mul_135"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_136"
+  op: "Mul"
+  input: "AddN_12"
+  input: "AddN_45"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_137"
+  op: "Mul"
+  input: "AddN_20"
+  input: "Mul_111"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_46"
+  op: "AddN"
+  input: "Mul_136"
+  input: "Mul_137"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_138"
+  op: "Mul"
+  input: "unstack:16"
+  input: "AddN_46"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_139"
+  op: "Mul"
+  input: "sub_16"
+  input: "Mul_112"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_47"
+  op: "AddN"
+  input: "Mul_138"
+  input: "Mul_139"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_140"
+  op: "Mul"
+  input: "Mul_38"
+  input: "Mul_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_141"
+  op: "Mul"
+  input: "Mul_41"
+  input: "AddN_47"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_142"
+  op: "Mul"
+  input: "Mul_73"
+  input: "Mul_125"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_48"
+  op: "AddN"
+  input: "Mul_140"
+  input: "Mul_141"
+  input: "Mul_142"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_143"
+  op: "Mul"
+  input: "AddN_4"
+  input: "Mul_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_144"
+  op: "Mul"
+  input: "AddN_35"
+  input: "AddN_29"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_145"
+  op: "Mul"
+  input: "AddN_36"
+  input: "AddN_48"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_49"
+  op: "AddN"
+  input: "Mul_143"
+  input: "Mul_144"
+  input: "Mul_145"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_146"
+  op: "Mul"
+  input: "AddN_3"
+  input: "AddN_30"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_147"
+  op: "Mul"
+  input: "AddN_31"
+  input: "AddN_33"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_148"
+  op: "Mul"
+  input: "AddN_34"
+  input: "AddN_43"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_149"
+  op: "Mul"
+  input: "AddN_44"
+  input: "AddN_49"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_50"
+  op: "AddN"
+  input: "Mul_146"
+  input: "Mul_147"
+  input: "Mul_148"
+  input: "Mul_149"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_150"
+  op: "Mul"
+  input: "Const_4"
+  input: "AddN_50"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_151"
+  op: "Mul"
+  input: "unstack:14"
+  input: "Const_3"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_152"
+  op: "Mul"
+  input: "sub_14"
+  input: "Const_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_51"
+  op: "AddN"
+  input: "Mul_151"
+  input: "Mul_152"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_153"
+  op: "Mul"
+  input: "Mul_12"
+  input: "Const_26"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_154"
+  op: "Mul"
+  input: "unstack:3"
+  input: "Mul_153"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_155"
+  op: "Mul"
+  input: "sub_3"
+  input: "AddN_11"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_52"
+  op: "AddN"
+  input: "Mul_154"
+  input: "Mul_155"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_156"
+  op: "Mul"
+  input: "Mul_56"
+  input: "Mul_19"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_157"
+  op: "Mul"
+  input: "Mul_78"
+  input: "AddN_16"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_53"
+  op: "AddN"
+  input: "Mul_156"
+  input: "Mul_157"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_158"
+  op: "Mul"
+  input: "unstack:10"
+  input: "AddN_53"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_159"
+  op: "Mul"
+  input: "sub_10"
+  input: "AddN_18"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_54"
+  op: "AddN"
+  input: "Mul_158"
+  input: "Mul_159"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_160"
+  op: "Mul"
+  input: "unstack:9"
+  input: "AddN_54"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_161"
+  op: "Mul"
+  input: "sub_9"
+  input: "Mul_21"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_55"
+  op: "AddN"
+  input: "Mul_160"
+  input: "Mul_161"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_162"
+  op: "Mul"
+  input: "Const_15"
+  input: "AddN_54"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_163"
+  op: "Mul"
+  input: "AddN_12"
+  input: "AddN_55"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_164"
+  op: "Mul"
+  input: "AddN_20"
+  input: "Mul_162"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_56"
+  op: "AddN"
+  input: "Mul_163"
+  input: "Mul_164"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_165"
+  op: "Mul"
+  input: "Mul_15"
+  input: "Mul_162"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_166"
+  op: "Mul"
+  input: "unstack:16"
+  input: "AddN_56"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_167"
+  op: "Mul"
+  input: "sub_16"
+  input: "Mul_165"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_57"
+  op: "AddN"
+  input: "Mul_166"
+  input: "Mul_167"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_168"
+  op: "Mul"
+  input: "unstack:3"
+  input: "AddN_11"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_169"
+  op: "Mul"
+  input: "sub_3"
+  input: "Mul_153"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_58"
+  op: "AddN"
+  input: "Mul_168"
+  input: "Mul_169"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_170"
+  op: "Mul"
+  input: "Mul_38"
+  input: "Mul_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_171"
+  op: "Mul"
+  input: "Mul_73"
+  input: "Mul_89"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_172"
+  op: "Mul"
+  input: "AddN_52"
+  input: "AddN_57"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_173"
+  op: "Mul"
+  input: "AddN_58"
+  input: "AddN_22"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_59"
+  op: "AddN"
+  input: "Mul_170"
+  input: "Mul_171"
+  input: "Mul_172"
+  input: "Mul_173"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_174"
+  op: "Mul"
+  input: "AddN_4"
+  input: "Mul_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_175"
+  op: "Mul"
+  input: "AddN_5"
+  input: "AddN_59"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_60"
+  op: "AddN"
+  input: "Mul_174"
+  input: "Mul_175"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_176"
+  op: "Mul"
+  input: "Const_12"
+  input: "Mul_165"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_177"
+  op: "Mul"
+  input: "Mul_38"
+  input: "Mul_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_178"
+  op: "Mul"
+  input: "Mul_73"
+  input: "Mul_89"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_179"
+  op: "Mul"
+  input: "AddN_52"
+  input: "Mul_176"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_180"
+  op: "Mul"
+  input: "AddN_58"
+  input: "Mul_97"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_61"
+  op: "AddN"
+  input: "Mul_177"
+  input: "Mul_178"
+  input: "Mul_179"
+  input: "Mul_180"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_181"
+  op: "Mul"
+  input: "AddN_4"
+  input: "Mul_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_182"
+  op: "Mul"
+  input: "AddN_5"
+  input: "AddN_61"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_62"
+  op: "AddN"
+  input: "Mul_181"
+  input: "Mul_182"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_183"
+  op: "Mul"
+  input: "AddN_3"
+  input: "AddN_60"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_184"
+  op: "Mul"
+  input: "AddN_31"
+  input: "AddN_62"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_185"
+  op: "Mul"
+  input: "AddN_34"
+  input: "AddN_43"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_186"
+  op: "Mul"
+  input: "AddN_44"
+  input: "AddN_49"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_63"
+  op: "AddN"
+  input: "Mul_183"
+  input: "Mul_184"
+  input: "Mul_185"
+  input: "Mul_186"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_187"
+  op: "Mul"
+  input: "unstack:6"
+  input: "sub"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_188"
+  op: "Mul"
+  input: "sub_6"
+  input: "Const_6"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_64"
+  op: "AddN"
+  input: "Mul_187"
+  input: "Mul_188"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_189"
+  op: "Mul"
+  input: "Const_19"
+  input: "AddN_15"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_190"
+  op: "Mul"
+  input: "Mul_56"
+  input: "Mul_19"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_191"
+  op: "Mul"
+  input: "Mul_78"
+  input: "Mul_189"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_65"
+  op: "AddN"
+  input: "Mul_190"
+  input: "Mul_191"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_192"
+  op: "Mul"
+  input: "unstack:10"
+  input: "AddN_65"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_193"
+  op: "Mul"
+  input: "sub_10"
+  input: "AddN_18"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_66"
+  op: "AddN"
+  input: "Mul_192"
+  input: "Mul_193"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_194"
+  op: "Mul"
+  input: "unstack:9"
+  input: "AddN_54"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_195"
+  op: "Mul"
+  input: "sub_9"
+  input: "AddN_66"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_67"
+  op: "AddN"
+  input: "Mul_194"
+  input: "Mul_195"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_196"
+  op: "Mul"
+  input: "AddN_12"
+  input: "AddN_55"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_197"
+  op: "Mul"
+  input: "AddN_20"
+  input: "AddN_67"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_68"
+  op: "AddN"
+  input: "Mul_196"
+  input: "Mul_197"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_198"
+  op: "Mul"
+  input: "Mul_15"
+  input: "AddN_67"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_199"
+  op: "Mul"
+  input: "unstack:16"
+  input: "AddN_68"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_200"
+  op: "Mul"
+  input: "sub_16"
+  input: "Mul_198"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_69"
+  op: "AddN"
+  input: "Mul_199"
+  input: "Mul_200"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_201"
+  op: "Mul"
+  input: "Mul_38"
+  input: "Mul_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_202"
+  op: "Mul"
+  input: "Mul_73"
+  input: "Mul_89"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_203"
+  op: "Mul"
+  input: "AddN_52"
+  input: "AddN_69"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_204"
+  op: "Mul"
+  input: "AddN_58"
+  input: "AddN_22"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_70"
+  op: "AddN"
+  input: "Mul_201"
+  input: "Mul_202"
+  input: "Mul_203"
+  input: "Mul_204"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_29"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_205"
+  op: "Mul"
+  input: "Const_29"
+  input: "unstack"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_206"
+  op: "Mul"
+  input: "AddN_4"
+  input: "Mul_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_207"
+  op: "Mul"
+  input: "AddN_64"
+  input: "AddN_70"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_208"
+  op: "Mul"
+  input: "Mul_205"
+  input: "AddN_59"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_71"
+  op: "AddN"
+  input: "Mul_206"
+  input: "Mul_207"
+  input: "Mul_208"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_209"
+  op: "Mul"
+  input: "Const_12"
+  input: "Mul_198"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_210"
+  op: "Mul"
+  input: "Mul_38"
+  input: "Mul_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_211"
+  op: "Mul"
+  input: "Mul_73"
+  input: "Mul_89"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_212"
+  op: "Mul"
+  input: "AddN_52"
+  input: "Mul_209"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_213"
+  op: "Mul"
+  input: "AddN_58"
+  input: "Mul_97"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_72"
+  op: "AddN"
+  input: "Mul_210"
+  input: "Mul_211"
+  input: "Mul_212"
+  input: "Mul_213"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_214"
+  op: "Mul"
+  input: "AddN_4"
+  input: "Mul_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_215"
+  op: "Mul"
+  input: "AddN_64"
+  input: "AddN_72"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_216"
+  op: "Mul"
+  input: "Mul_205"
+  input: "AddN_61"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_73"
+  op: "AddN"
+  input: "Mul_214"
+  input: "Mul_215"
+  input: "Mul_216"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_217"
+  op: "Mul"
+  input: "AddN_3"
+  input: "AddN_71"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_218"
+  op: "Mul"
+  input: "AddN_31"
+  input: "AddN_73"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_219"
+  op: "Mul"
+  input: "AddN_34"
+  input: "AddN_43"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_220"
+  op: "Mul"
+  input: "AddN_44"
+  input: "AddN_49"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_74"
+  op: "AddN"
+  input: "Mul_217"
+  input: "Mul_218"
+  input: "Mul_219"
+  input: "Mul_220"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_221"
+  op: "Mul"
+  input: "unstack:13"
+  input: "AddN_63"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_222"
+  op: "Mul"
+  input: "sub_13"
+  input: "AddN_74"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_75"
+  op: "AddN"
+  input: "Mul_221"
+  input: "Mul_222"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_223"
+  op: "Mul"
+  input: "AddN_2"
+  input: "Mul_150"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_224"
+  op: "Mul"
+  input: "AddN_51"
+  input: "AddN_75"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_76"
+  op: "AddN"
+  input: "Mul_223"
+  input: "Mul_224"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_225"
+  op: "Mul"
+  input: "unstack:19"
+  input: "Mul_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_226"
+  op: "Mul"
+  input: "sub_19"
+  input: "AddN"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_77"
+  op: "AddN"
+  input: "Mul_225"
+  input: "Mul_226"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_30"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_227"
+  op: "Mul"
+  input: "Const_30"
+  input: "unstack:5"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_228"
+  op: "Mul"
+  input: "Const_29"
+  input: "Const_23"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_229"
+  op: "Mul"
+  input: "Mul_228"
+  input: "Mul_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_230"
+  op: "Mul"
+  input: "AddN_3"
+  input: "AddN_30"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_231"
+  op: "Mul"
+  input: "AddN_44"
+  input: "AddN_49"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_232"
+  op: "Mul"
+  input: "Mul_227"
+  input: "Mul_229"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_78"
+  op: "AddN"
+  input: "Mul_230"
+  input: "Mul_231"
+  input: "Mul_232"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_233"
+  op: "Mul"
+  input: "unstack:13"
+  input: "AddN_50"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_234"
+  op: "Mul"
+  input: "sub_13"
+  input: "AddN_78"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_79"
+  op: "AddN"
+  input: "Mul_233"
+  input: "Mul_234"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_235"
+  op: "Mul"
+  input: "AddN_3"
+  input: "AddN_71"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_236"
+  op: "Mul"
+  input: "AddN_44"
+  input: "AddN_49"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_237"
+  op: "Mul"
+  input: "Mul_227"
+  input: "Mul_229"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_80"
+  op: "AddN"
+  input: "Mul_235"
+  input: "Mul_236"
+  input: "Mul_237"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_238"
+  op: "Mul"
+  input: "unstack:13"
+  input: "AddN_63"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_239"
+  op: "Mul"
+  input: "sub_13"
+  input: "AddN_80"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_81"
+  op: "AddN"
+  input: "Mul_238"
+  input: "Mul_239"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_240"
+  op: "Mul"
+  input: "AddN_2"
+  input: "AddN_79"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_241"
+  op: "Mul"
+  input: "AddN_51"
+  input: "AddN_81"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_82"
+  op: "AddN"
+  input: "Mul_240"
+  input: "Mul_241"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_31"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Const_32"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_242"
+  op: "Mul"
+  input: "unstack:17"
+  input: "Const_32"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_243"
+  op: "Mul"
+  input: "sub_17"
+  input: "Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_83"
+  op: "AddN"
+  input: "Mul_242"
+  input: "Mul_243"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_244"
+  op: "Mul"
+  input: "Const_31"
+  input: "AddN_83"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_33"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_245"
+  op: "Mul"
+  input: "Const_33"
+  input: "Const_2"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Const_34"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "Mul_246"
+  op: "Mul"
+  input: "Const_30"
+  input: "Const_34"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_247"
+  op: "Mul"
+  input: "Mul_246"
+  input: "Mul_229"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_248"
+  op: "Mul"
+  input: "Const_4"
+  input: "Mul_247"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_249"
+  op: "Mul"
+  input: "Mul_245"
+  input: "Mul_248"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_250"
+  op: "Mul"
+  input: "unstack:17"
+  input: "Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_251"
+  op: "Mul"
+  input: "sub_17"
+  input: "sub_18"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_84"
+  op: "AddN"
+  input: "Mul_250"
+  input: "Mul_251"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_252"
+  op: "Mul"
+  input: "Const_31"
+  input: "AddN_84"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_253"
+  op: "Mul"
+  input: "unstack:12"
+  input: "AddN_15"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_254"
+  op: "Mul"
+  input: "sub_12"
+  input: "Mul_48"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_85"
+  op: "AddN"
+  input: "Mul_253"
+  input: "Mul_254"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_255"
+  op: "Mul"
+  input: "AddN_13"
+  input: "Mul_189"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_256"
+  op: "Mul"
+  input: "AddN_17"
+  input: "AddN_85"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_257"
+  op: "Mul"
+  input: "Mul_56"
+  input: "Mul_19"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_86"
+  op: "AddN"
+  input: "Mul_255"
+  input: "Mul_256"
+  input: "Mul_257"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_258"
+  op: "Mul"
+  input: "unstack:10"
+  input: "AddN_86"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_259"
+  op: "Mul"
+  input: "sub_10"
+  input: "AddN_18"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_87"
+  op: "AddN"
+  input: "Mul_258"
+  input: "Mul_259"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_260"
+  op: "Mul"
+  input: "unstack:9"
+  input: "Mul_60"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_261"
+  op: "Mul"
+  input: "sub_9"
+  input: "AddN_87"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_88"
+  op: "AddN"
+  input: "Mul_260"
+  input: "Mul_261"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_262"
+  op: "Mul"
+  input: "AddN_12"
+  input: "AddN_19"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_263"
+  op: "Mul"
+  input: "AddN_20"
+  input: "AddN_88"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_89"
+  op: "AddN"
+  input: "Mul_262"
+  input: "Mul_263"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_264"
+  op: "Mul"
+  input: "Mul_15"
+  input: "AddN_88"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_265"
+  op: "Mul"
+  input: "unstack:16"
+  input: "AddN_89"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_266"
+  op: "Mul"
+  input: "sub_16"
+  input: "Mul_264"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_90"
+  op: "AddN"
+  input: "Mul_265"
+  input: "Mul_266"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_267"
+  op: "Mul"
+  input: "Mul_38"
+  input: "Mul_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_268"
+  op: "Mul"
+  input: "Mul_73"
+  input: "Mul_89"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_269"
+  op: "Mul"
+  input: "AddN_52"
+  input: "AddN_90"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_270"
+  op: "Mul"
+  input: "AddN_58"
+  input: "AddN_22"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_91"
+  op: "AddN"
+  input: "Mul_267"
+  input: "Mul_268"
+  input: "Mul_269"
+  input: "Mul_270"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_271"
+  op: "Mul"
+  input: "AddN_4"
+  input: "Mul_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_272"
+  op: "Mul"
+  input: "AddN_64"
+  input: "AddN_91"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_273"
+  op: "Mul"
+  input: "Mul_205"
+  input: "AddN_29"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_92"
+  op: "AddN"
+  input: "Mul_271"
+  input: "Mul_272"
+  input: "Mul_273"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_274"
+  op: "Mul"
+  input: "Const_12"
+  input: "Mul_264"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_275"
+  op: "Mul"
+  input: "Mul_38"
+  input: "Mul_24"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_276"
+  op: "Mul"
+  input: "Mul_73"
+  input: "Mul_89"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_277"
+  op: "Mul"
+  input: "AddN_52"
+  input: "Mul_274"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_278"
+  op: "Mul"
+  input: "AddN_58"
+  input: "Mul_97"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_93"
+  op: "AddN"
+  input: "Mul_275"
+  input: "Mul_276"
+  input: "Mul_277"
+  input: "Mul_278"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_279"
+  op: "Mul"
+  input: "AddN_4"
+  input: "Mul_25"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_280"
+  op: "Mul"
+  input: "AddN_64"
+  input: "AddN_93"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_281"
+  op: "Mul"
+  input: "Mul_205"
+  input: "AddN_32"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_94"
+  op: "AddN"
+  input: "Mul_279"
+  input: "Mul_280"
+  input: "Mul_281"
+  attr {
+    key: "N"
+    value {
+      i: 3
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_282"
+  op: "Mul"
+  input: "AddN_3"
+  input: "AddN_92"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_283"
+  op: "Mul"
+  input: "AddN_31"
+  input: "AddN_94"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_284"
+  op: "Mul"
+  input: "AddN_34"
+  input: "AddN_43"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_285"
+  op: "Mul"
+  input: "AddN_44"
+  input: "AddN_49"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_95"
+  op: "AddN"
+  input: "Mul_282"
+  input: "Mul_283"
+  input: "Mul_284"
+  input: "Mul_285"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_286"
+  op: "Mul"
+  input: "unstack:13"
+  input: "AddN_50"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_287"
+  op: "Mul"
+  input: "sub_13"
+  input: "AddN_95"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_96"
+  op: "AddN"
+  input: "Mul_286"
+  input: "Mul_287"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_288"
+  op: "Mul"
+  input: "AddN_2"
+  input: "Mul_150"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_289"
+  op: "Mul"
+  input: "AddN_51"
+  input: "AddN_96"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_97"
+  op: "AddN"
+  input: "Mul_288"
+  input: "Mul_289"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_290"
+  op: "Mul"
+  input: "AddN_1"
+  input: "AddN_76"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_291"
+  op: "Mul"
+  input: "AddN_77"
+  input: "AddN_82"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_292"
+  op: "Mul"
+  input: "Mul_244"
+  input: "Mul_249"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "Mul_293"
+  op: "Mul"
+  input: "Mul_252"
+  input: "AddN_97"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "AddN_98"
+  op: "AddN"
+  input: "Mul_290"
+  input: "Mul_291"
+  input: "Mul_292"
+  input: "Mul_293"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "wmc_output"
+  op: "Identity"
+  input: "AddN_98"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+versions {
+  producer: 27
+}
