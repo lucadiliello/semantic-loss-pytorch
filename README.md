@@ -42,6 +42,9 @@ x = torch.rand((batch_size, 2, 2))
 
 sl = SemanticLoss('constraint.sdd', 'constraint.vtree')
 loss, wmc, wmc_per_sample = sl(probabilities=x, output_wmc=True, output_wmc_per_sample=True)
+
+# or maybe a simpler
+loss = sl(x)
 ```
 
 
