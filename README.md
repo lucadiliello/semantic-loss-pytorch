@@ -44,7 +44,9 @@ sl = SemanticLoss('constraint.sdd', 'constraint.vtree')
 loss, wmc, wmc_per_sample = sl(probabilities=x, output_wmc=True, output_wmc_per_sample=True)
 
 # or maybe a simpler
-loss = sl(x)
+loss = sl(probabilities=x)
+# or if you are working with logits
+loss = sl(logits=logits)
 ```
 
 
@@ -239,7 +241,22 @@ batch_size = 8
 x = torch.rand((batch_size, 2, 2))
 
 sl = SemanticLoss('constraint.sdd', 'constraint.vtree')
+
+# now call the SL in different ways
+
+# if `x` is probabilities
 loss, wmc, wmc_per_sample = sl(probabilities=x, output_wmc=True, output_wmc_per_sample=True)
+# if `x` is logits
+loss, wmc, wmc_per_sample = sl(logits=x, output_wmc=True, output_wmc_per_sample=True)
+# if you want only something
+loss, wmc = sl(probabilities=x, output_wmc=True)
+# or
+loss, wmc_per_sample = sl(logits=x, output_wmc_per_sample=True)
+# or maybe only
+loss = sl(logits=x)
+# or
+loss = sl(probabilities=x)
+
 
 loss.shape
 # (1,)
