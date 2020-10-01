@@ -1,0 +1,10 @@
+shape [2, 2]
+
+# near elements must be different
+# notice that this is not the best way to encode this constraint...
+~Equivalent(X0.0, ~X0.1)
+~Equivalent(X0.0, ~X1.0)
+~Equivalent(X1.1, ~X0.1)
+~Equivalent(X1.1, ~X1.0)
+
+

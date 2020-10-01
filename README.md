@@ -1,34 +1,30 @@
-##### This is a port of the pypsdd library from python2 to python3.
-##### It's not stable nor thoroughly tested, so take it's results so take its results with a pinch of salt.
-##### As of now, tests comparing the generated tensorflow arithmetic circuits show that the two versions build the same network, however this is not enough and more testing is required.
-###### Tests comparing the output tensorflow graphs from both versions (python2 and 3) can be found in 2to3testing.
-
-
 # semantic-loss-pytorch
 
-Create `Semantic Loss` circuits in `PyTorch` from `SDDs`.
+Create `Semantic Loss` equivalent circuits in `PyTorch` using `SDDs` for knowledge compilation.
 
 
 # Table of contents
 0. [Quick start](#faststart)
 1. [Convert constraint to DIMACS](#tocnf)
-2. [PySDD](#PySDD)
-3. [Semantic losses](#semlosses)  
-3.1 [SemanticLossStatistics](#semlossstats)
-4. [WMC statistics](#wmcstats)
-5. [VNU statistics](#vnustats)
+2. [PySDD](#pysdd)
+3. [Semantic losses](#semloss)  
 
 <a name="faststart"></a>
 ## Quick start
 
-- Write your constraints respecting the `sympy` sintax, with variables like `X1.2` and operators like `And(X0.2.3, X1.1.1)`. All lines are put in `and` relationship. Convert to DIMACS with:
+- Install this package
 ```bash
-python utils.constraints_to_cnf.py -i <myinputfile>.sympy -o <dimacs>.txt 
+pip install git+https://github.com/lucadiliello/semantic-loss-pytorch.git
 ```
 
-- Install `PySDD`:
+- Write your constraints respecting the `sympy` sintax, with variables like `X1.2` and operators like `And(X0.2.3, X1.1.1)`. All lines are put in `and` relationship. Convert to DIMACS syntax with:
 ```bash
-pip install PySDD
+python -m semantic_loss_pytorch.constraints_to_cnf.py -i <myinputfile>.sympy -o <dimacs>.txt 
+```
+
+- Install `PySDD` (`pip install PySDD` seems to give some errors):
+```bash
+pip install git+https://github.com/wannesm/PySDD.git
 ```
 
 - Compile your constraint to a `vtree` and an `sdd` file. To do so, run:
@@ -36,12 +32,22 @@ pip install PySDD
 pysdd -c dimacs.txt -W constraint.vtree -R constraint.sdd
 ```
 
+- Use the semantic loss in your `PyTorch` project
+```python
+from semantic_loss_pytorch import SemanticLoss
+
+batch_size = 8
+# constraints over a 2x2 variable
+x = torch.rand((batch_size, 2, 2))
+
+loss, wmc, wmc_per_sample = SemanticLoss(probabilities=x, output_wmc=True, output_wmc_per_sample=True)
+```
 
 
 <a name="tocnf"></a>  
 ## Convert constraint to DIMACS
 
-`utils.constraints_to_cnf` is a module which allows the writing
+`semantic_loss_pytorch.constraints_to_cnf` is a module which allows the writing
 of constraints in propositional logic in the syntax of **sympy, and
 then translate them to DIMACS**. Constraints are expressed
 1 by line, and are considered to be in an `and` relationsip.
@@ -66,7 +72,7 @@ be written with more operators:
 - implies, by using ">>" and "<<".
 - Equivalent(X1, X2, X3), etc.
 - check out https://docs.sympy.org/latest/modules/logic.html for
-more alternatives to the syntax, like Or(a, b) instead of a|b.
+more alternatives to the syntax, like `Or(a, b)` instead of `a|b`.
 - essentially, you are not limited to the syntax of the logic
 module of sympy, but can access the whole package if you want to try
 funky stuff, this is however not supported in this package and you will
@@ -82,7 +88,7 @@ the second variable must assume state 2, moreover, the third variable
 has always state 3.
 
 Keep in mind that variables are referred starting from index 0.
-```
+```bash
 # this is a comment
 shape [4,3]
 
@@ -124,8 +130,9 @@ X3.2 >> (~X3.0 & ~X3.1)
 After writing this input file, you can simply call
 the script.
 ```bash
-python constraints_to_cnf.py -i myinputfile.txt -o dimacs.txt 
+python -m constraints_to_cnf.py -i myinputfile.txt -o dimacs.txt
 ```
+
 The result would be the following DIMACS file:
 ```
 c This file was generated with the constraints_to_cnf module in this project.
@@ -155,7 +162,7 @@ p cnf 12 18
 
 ###### Note that DIMACS refers to variables by starting from index 1, and not 0.
 
-Note that "-p" is an optional argument to also specify
+Note that `-p` is an optional argument to also specify
 the number of processes to use while using sympy to parse
 our constraints. This might be necessary if you have many constraints,
 given that sympy seems to really take a hit when parsing long strings.
@@ -188,7 +195,7 @@ on your computer).
 
 
 
-<a name="PySDD"></a>  
+<a name="pysdd"></a>  
 ## PySDD
 
 To compile your DIMACS cnf files to vtrees and sdds, and to use make use of them
@@ -209,55 +216,32 @@ used to create the equivalent `PyTorch` tree.
 
 
 
-<a name="semlosses"></a>  
+<a name="semloss"></a>  
 ## Semantic Loss
 
+The semantic loss module will build a tree over the given tensor in such a way that this tree will represent the formula encoded in the SDD.
 
+It is a subclass of `torch.nn.modules.losses._Loss` and when called, return up to three tensors:
+- `wmc_per_sample`: the weighted model count with respect to each given sample
+- `wmc`: the average of `wmc_per_sample`
+- `loss`: the negative logarithm of `wmc`
 
+```python
+import torch
+from semantic_loss_pytorch import SemanticLoss
 
-<a name="semlossstats"></a>  
-### SemanticLossStatistic
-This class, that you can find in the statistic module of this directory, will automatically
-pickup the value of all semantic losses and the related WMC values, and log them to tensorboard.
-Given any number of semantic losses you are using, you can log them all by simply
-adding this statistics to your generator statistics:
-```bash
-    "GENERATOR_STATISTICS": ["SemanticLossStatistics"]
+batch_size = 8
+# constraints over a 2x2 variable
+x = torch.rand((batch_size, 2, 2))
+
+loss, wmc, wmc_per_sample = SemanticLoss(probabilities=x, output_wmc=True, output_wmc_per_sample=True)
+
+loss.shape
+# (1,)
+
+wmc.shape
+# (1,)
+
+wmc_per_sample.shape
+# (batch_size,)
 ```
-
-<a name="wmcstats"></a>  
-## WMCStatistic
-You might be interested in the value of the weighted model counting obtained
-by using the sdd related to a given constraint, without actually using its SemanticLoss
-class.  
-For each existing SemanticLoss class in this directory losses module, a WMC Statistic is automatically
-created, which you can add to your experiment in order to log the WMC without adding the semantic
-loss to the experiment.  
-Let's say you have placed placeholder.sdd and placeholder.vtree in the aforementioned directories, as we
-explaiend before, a class named SemanticLoss_placeholder will be created; this means
-that a class named WMC_placeholder will also be created, and you will be able to log the WMC in tensorboard
-by simply adding it to the generator statistics:  
-```bash
-    "GENERATOR_STATISTICS": ["WMC_placeholder"]
-```
-Again, you are still free to implement your own WMC class.
-
-<a name="vnustats"></a>  
-## VNUStatistic
-You might be interested in logging the Validity, Novelty and Uniqueness values thorough training, 
-where the Validity is the percentage of perfect items, according to a given constraint, Novelty
-is the fraction of those perfect items that are not present in the dataset, and Uniqueness is
-the number of unique perfect items w.r.t all those valid items.  
-For each existing SemanticLoss class in this directory losses module, a VNU Statistic is automatically
-created, which you can add to your experiment in order to log the Validity, Novelty, and Uniqueness without adding the semantic
-loss to the experiment.  
-Let's say you have placed placeholder.sdd and placeholder.vtree in the aforementioned directories, as we
-explaiend before, a class named SemanticLoss_placeholder will be created; this means
-that a class named VNU_placeholder will also be created, and you will be able to log the VNU stats in tensorboard
-by simply adding it to the generator statistics:  
-```bash
-    "GENERATOR_STATISTICS": ["VNU_placeholder"]
-```
-Again, you are still free to implement your own VNU class.
-
-

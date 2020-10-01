@@ -1,1 +1,1 @@
-from .py3psdd import *
+from semantic_loss_pytorch.semantic_loss import SemanticLoss

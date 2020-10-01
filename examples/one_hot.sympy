@@ -1,0 +1,5 @@
+shape [3]
+
+# ONE-HOT encoding over a vector of 3 elements
+
+And(X0, ~X1, ~X2) | And(~X0, X1, ~X2) | And(~X0, ~X1, X2)

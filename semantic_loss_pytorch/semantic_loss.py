@@ -3,13 +3,14 @@ import json
 from functools import reduce
 
 import torch
-from py3psdd import Vtree, SddManager, PSddManager, io
+from torch.nn.modules.loss import _Loss
+from semantic_loss_pytorch.py3psdd import Vtree, SddManager, PSddManager, io
 
 # For numerical stability
 EPSILON = 1e-9
 
 
-class SemanticLoss(Loss):
+class SemanticLoss(_Loss):
     """
     Module containing the semantic loss.
     To use the loss, simply pass the relative vtree and sdd files.
@@ -20,7 +21,7 @@ class SemanticLoss(Loss):
     """
 
     @staticmethod
-    def _import_psdd(sdd_file: str, vtree_file: str):
+    def _import_psdd(sdd_file: str, vtree_file: str) -> PSddManager:
         """
         Given a constraint_name, assert the existence and look for the related .vtree and .sdd files.
         The vtree and sdd are loaded and used to instantiate the psdd, which is then returned.
@@ -40,13 +41,18 @@ class SemanticLoss(Loss):
 
         return psdd
 
-    def __init__(self, sdd_file, vtree_file, *args, input_are_logits=False, **kwargs):
+    def __init__(self, sdd_file: str, vtree_file: str, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.input_are_logits = input_are_logits
         # instantiate the psdd
         self.psdd = SemanticLoss._import_psdd(sdd_file, vtree_file)
 
-    def forward(self, x):
+    def forward(
+        self,
+        logits: torch.FloatTensor = None,
+        probabilities: torch.FloatTensor = None,
+        output_wmc:bool = False,
+        output_wmc_per_sample: bool = False
+    ) -> torch.FloatTensor:
         """
         Returns the semantic loss related to the instance of this class, using the `x` input.
         If input are logits, the sigmoid function is applied to the input.
@@ -54,36 +60,26 @@ class SemanticLoss(Loss):
         :param x: input tensor that will be interpreted as probabilities or logits (input_are_logits=True)
         :return: the weighted model count for the input tensor `x` with respect to the psdd
         """
+        if (logits is None) == (probabilities is None):
+            raise ValueError("Only logits or probabilities can be provided, neither both nor none")
 
-        # set values to probabilities
-        toprobs = x
+        # set logits to probabilities
+        if logits is not None:
+            probabilities = torch.sigmoid(logits)
 
-        if self.input_are_logits:
-            toprobs = torch.nn.functional.sigmoid(x)
+        # need to reshape as a 1d vector of variables for each sample, needed by psdd for the torch AC
+        batch_size, *other_dims = probabilities.size()
+        total_variables = reduce(lambda x, y: x * y, other_dims)
+        probs_as_vector = torch.reshape(probabilities, (batch_size, total_variables))
 
-        # need to reshape as a 1d vector of variables for each sample, needed by psdd for the tf AC
-        batch_size = toprobs.shape[0]
-        total_variables = reduce(lambda x, y: x * y, toprobs.shape[1:])
-        probs_as_vector = torch.reshape(toprobs, (batch_size, total_variables))
+        wmc_per_sample = self.psdd.generate_pt_ac_v2(probs_as_vector)
+        wmc = torch.mean(wmc_per_sample)
+        loss = -torch.log(wmc)
+
+        outputs = (loss,)
+        if output_wmc:
+            outputs = outputs + (wmc,)
+        if output_wmc_per_sample:
+            outputs = outputs + (wmc_per_sample,)
         
-        wmc_per_sample = psdd.generate_tf_ac_v2(probs_as_vector, self.experiment["BATCH_SIZE"])
-
-        
-        self.logger.info("Semantic loss wmc of shape %s" % wmc_per_sample.shape)
-        
-        wmc = tf.reduce_mean(wmc_per_sample)
-        self.logger.info("Semantic loss reduced wmc of shape %s" % wmc.shape)
-        
-        semantic_loss_pre_timing = -tf.log(wmc)
-        semantic_loss = self._time_semantic_loss(graph_nodes, semantic_loss_pre_timing)
-
-        nodes["G_loss"] = semantic_loss  # needed cos its expected by the trainer
-        nodes[self.constraint_name] = semantic_loss_pre_timing
-        nodes[self.constraint_name + "_wmc"] = wmc
-        nodes[self.constraint_name + "_wmc_per_sample"] = wmc_per_sample
-        nodes_to_log = {**nodes}
-        nodes_to_log.pop(self.constraint_name + "_wmc_per_sample")
-
-        del psdd
-        return nodes, nodes_to_log, dict()
-
+        return outputs if len(outputs) > 1 else outputs[0]

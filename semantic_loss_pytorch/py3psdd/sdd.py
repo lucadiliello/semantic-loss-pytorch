@@ -471,8 +471,8 @@ class NormalizedSddNode(SddNode):
         return data
 
     def generate_tf_ac(self, litleaves, clear_data=True):
-        """ Generates a tensorflow arithmetic circuit according to the weighted model counting procedure for this SDD.
-
+        """
+        Generates a tensorflow arithmetic circuit according to the weighted model counting procedure for this SDD.
         Assumes the SDD is normalized.
         """
 
@@ -496,8 +496,8 @@ class NormalizedSddNode(SddNode):
         return data
 
     def generate_tf_ac_v2(self, trueprobs, clear_data=True):
-        """ Generates a tensorflow arithmetic circuit according to the weighted model counting procedure for this SDD.
-
+        """
+        Generates a tensorflow arithmetic circuit according to the weighted model counting procedure for this SDD.
         Assumes the SDD is normalized.
         """
         falseprobs = 1.0 - trueprobs
@@ -536,6 +536,46 @@ class NormalizedSddNode(SddNode):
 
             node.data = data
 
+        return data
+    
+    def generate_pt_ac_v2(self, trueprobs, clear_data=True):
+        """
+        Generates a pytorch arithmetic circuit according to the weighted model counting procedure for this SDD.
+        Assumes the SDD is normalized.
+        """
+
+        # Going to need tensorflow for this, but not for the rest of the project, so import here
+        import torch
+        true_tensor = torch.ones(1)
+        false_tensor = torch.zeros(1)
+
+        for index, node in enumerate(self.as_list(clear_data=clear_data)):
+            if node.is_false():
+                data = false_tensor
+            elif node.is_true():
+                data = true_tensor
+            elif node.is_literal():
+                if node.literal > 0:
+                    data = trueprobs[:, node.literal - 1]
+                else:
+                    data = 1.0 - trueprobs[:, -node.literal - 1]
+            else:  # node.is_decomposition
+                res = []
+                for p, s in node.elements:
+                    if p.data is false_tensor or s.data is false_tensor:
+                        pass
+                    elif p.data is true_tensor:
+                        res.append(s.data)
+                    elif s.data is true_tensor:
+                        res.append(p.data)
+                    else:
+                        res.append(s.data * p.data)
+
+                if len(res) == 0:
+                    res.append(false_tensor)
+
+                data = torch.stack(res, dim=0).sum(dim=0)
+            node.data = data
         return data
 
     def count_variables(self):
