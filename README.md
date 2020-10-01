@@ -40,7 +40,8 @@ batch_size = 8
 # constraints over a 2x2 variable
 x = torch.rand((batch_size, 2, 2))
 
-loss, wmc, wmc_per_sample = SemanticLoss(probabilities=x, output_wmc=True, output_wmc_per_sample=True)
+sl = SemanticLoss('constraint.sdd', 'constraint.vtree')
+loss, wmc, wmc_per_sample = sl(probabilities=x, output_wmc=True, output_wmc_per_sample=True)
 ```
 
 
@@ -234,7 +235,8 @@ batch_size = 8
 # constraints over a 2x2 variable
 x = torch.rand((batch_size, 2, 2))
 
-loss, wmc, wmc_per_sample = SemanticLoss(probabilities=x, output_wmc=True, output_wmc_per_sample=True)
+sl = SemanticLoss('constraint.sdd', 'constraint.vtree')
+loss, wmc, wmc_per_sample = sl(probabilities=x, output_wmc=True, output_wmc_per_sample=True)
 
 loss.shape
 # (1,)
