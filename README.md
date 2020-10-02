@@ -31,6 +31,8 @@ pip install git+https://github.com/wannesm/PySDD.git
 ```bash
 pysdd -c dimacs.txt -W constraint.vtree -R constraint.sdd
 ```
+`PySDD` is only needed for this step. If you don't need to convert other 
+dimacs constraints to `vtree` and `sdd` files, you can uninstall it.
 
 - Use the semantic loss in your `PyTorch` project
 ```python
