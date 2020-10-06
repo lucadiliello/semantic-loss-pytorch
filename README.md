@@ -12,7 +12,7 @@ Create `Semantic Loss` equivalent circuits in `PyTorch` using `SDDs` for knowled
   * [2.2. PySDD](#pysdd)
   * [2.3. Semantic losses](#semloss)
 
-**[3. Credits](#credits)
+**[3. Credits](#credits)**
 
 <a name="faststart"></a>
 ## Quick start
