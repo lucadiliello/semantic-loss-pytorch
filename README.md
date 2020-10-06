@@ -240,6 +240,8 @@ It is a subclass of `torch.nn.modules.losses._Loss` and, when called, returns up
 - `wmc_per_sample`: the weighted model count with respect to each given sample
 - `wmc`: the average of `wmc_per_sample`
 - `loss`: the negative logarithm of `wmc`
+You must pass to the SL only one argument between `logits` and `probabilities`. `logits` are internally converted to
+probabilities with a `sigmoid` layer. If you need a different normalization, do it yourself and feed the `probabilities` argument.
 
 ```python
 import torch
