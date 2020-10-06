@@ -4,10 +4,15 @@ Create `Semantic Loss` equivalent circuits in `PyTorch` using `SDDs` for knowled
 
 
 # Table of contents
-0. [Quick start](#faststart)
-1. [Convert constraint to DIMACS](#tocnf)
-2. [PySDD](#pysdd)
-3. [Semantic losses](#semloss)  
+**[1. Quick start](#faststart)**
+
+**[2. Documentation](#doc)**
+
+  * [2.1. Convert constraint to DIMACS](#tocnf)
+  * [2.2. PySDD](#pysdd)
+  * [2.3. Semantic losses](#semloss)
+
+**[3. Credits](#credits)
 
 <a name="faststart"></a>
 ## Quick start
@@ -51,9 +56,11 @@ loss = sl(probabilities=x)
 loss = sl(logits=logits)
 ```
 
+<a name="doc"></a>
+## Documentation
 
 <a name="tocnf"></a>  
-## Convert constraint to DIMACS
+### Convert constraint to DIMACS
 
 `semantic_loss_pytorch.constraints_to_cnf` is a module which allows the writing
 of constraints in propositional logic in the syntax of **sympy, and
@@ -204,7 +211,7 @@ on your computer).
 
 
 <a name="pysdd"></a>  
-## PySDD
+### PySDD
 
 To compile your DIMACS cnf files to vtrees and sdds, and to use make use of them
 while running the main script you will need to install the `PySDD` module.  
@@ -225,7 +232,7 @@ used to create the equivalent `PyTorch` tree.
 
 
 <a name="semloss"></a>  
-## Semantic Loss
+### Semantic Loss
 
 The semantic loss module will build a tree over the given tensor in such a way that this tree will represent the formula encoded in the SDD.
 
@@ -269,3 +276,8 @@ wmc.shape
 wmc_per_sample.shape
 # (batch_size,)
 ```
+
+<a name="credits"></a>
+## Credits
+
+Thanks to [Jacopo Gobbi](https://github.com/fruttasecca) for his ackowledgement in using pieces of his software.
