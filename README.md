@@ -234,9 +234,9 @@ used to create the equivalent `PyTorch` tree.
 <a name="semloss"></a>  
 ### Semantic Loss
 
-The semantic loss module will build a tree over the given tensor in such a way that this tree will represent the formula encoded in the SDD.
+The semantic loss module will build a tree over the given tensor in such a way it will represent the formula encoded in the SDD.
 
-It is a subclass of `torch.nn.modules.losses._Loss` and when called, return up to three tensors:
+It is a subclass of `torch.nn.modules.losses._Loss` and, when called, returns up to three tensors:
 - `wmc_per_sample`: the weighted model count with respect to each given sample
 - `wmc`: the average of `wmc_per_sample`
 - `loss`: the negative logarithm of `wmc`
