@@ -282,4 +282,5 @@ wmc_per_sample.shape
 <a name="credits"></a>
 ## Credits
 
-Thanks to [Jacopo Gobbi](https://github.com/fruttasecca) for his ackowledgement in using pieces of his software.
+Thanks to [Jacopo Gobbi](https://github.com/fruttasecca) for his ackowledgement in using pieces of his software!
+Thanks to [PySDD](https://github.com/wannesm/PySDD) developers that made this possible!
