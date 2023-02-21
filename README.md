@@ -24,7 +24,7 @@ pip install git+https://github.com/lucadiliello/semantic-loss-pytorch.git
 
 - Write your constraints respecting the `sympy` sintax, with variables like `X1.2` and operators like `And(X0.2.3, X1.1.1)`. All lines are put in `and` relationship. Convert to DIMACS syntax with:
 ```bash
-python -m semantic_loss_pytorch.constraints_to_cnf.py -i <myinputfile>.sympy -o <dimacs>.txt 
+python -m semantic_loss_pytorch.constraints_to_cnf -i <myinputfile>.sympy -o <dimacs>.txt 
 ```
 
 - Install `PySDD` (`pip install PySDD` seems to give some errors):
