@@ -13,6 +13,7 @@ Create `Semantic Loss` equivalent circuits in `PyTorch` using `SDDs` for knowled
   * [2.3. Semantic losses](#semloss)
 
 **[3. Credits](#credits)**
+**[3. Citation](#citation)**
 
 <a name="faststart"></a>
 ## Quick start
@@ -285,3 +286,22 @@ wmc_per_sample.shape
 Thanks to [Jacopo Gobbi](https://github.com/fruttasecca) for his ackowledgement in using pieces of his software!
 
 Thanks to [PySDD](https://github.com/wannesm/PySDD) developers that made this possible!
+
+<a name="citation"></a>
+## Citation
+
+If you liked our work, please consider citing it.
+
+```tex
+@inproceedings{NEURIPS2020_a87c11b9,
+ author = {Di Liello, Luca and Ardino, Pierfrancesco and Gobbi, Jacopo and Morettin, Paolo and Teso, Stefano and Passerini, Andrea},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {H. Larochelle and M. Ranzato and R. Hadsell and M.F. Balcan and H. Lin},
+ pages = {14663--14674},
+ publisher = {Curran Associates, Inc.},
+ title = {Efficient Generation of Structured Objects with Constrained Adversarial Networks},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2020/file/a87c11b9100c608b7f8e98cfa316ff7b-Paper.pdf},
+ volume = {33},
+ year = {2020}
+}
+```
