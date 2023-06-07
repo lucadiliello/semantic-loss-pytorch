@@ -1,7 +1,7 @@
 import math
 import random
-
 from collections import defaultdict
+
 
 # AC: TODO: empty Inst?  Inst.from_list([],var_count)?
 

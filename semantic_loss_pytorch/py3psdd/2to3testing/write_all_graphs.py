@@ -1,6 +1,7 @@
 import os
 from os import path
 
+
 if __name__ == '__main__':
     for root, dirs, files in os.walk("."):
         for file in files:

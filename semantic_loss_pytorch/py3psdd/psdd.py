@@ -1,12 +1,11 @@
+import heapq
 import math
 import random
-import heapq
 
-
-from .sdd import SddNode,NormalizedSddNode
-from .data import DataSet,Inst,InstMap,WeightedInstMap
-from .sdd import SddEnumerator,SddTerminalEnumerator
+from .data import DataSet, Inst, InstMap, WeightedInstMap
 from .prior import Prior
+from .sdd import NormalizedSddNode, SddEnumerator, SddNode, SddTerminalEnumerator
+
 
 class PSddNode(NormalizedSddNode):
     """Probabilistic Sentential Decision Diagram (PSDD)

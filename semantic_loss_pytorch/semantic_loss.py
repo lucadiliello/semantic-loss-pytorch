@@ -1,10 +1,10 @@
 import os
-import json
-from functools import reduce
 
 import torch
 from torch.nn.modules.loss import _Loss
-from semantic_loss_pytorch.py3psdd import Vtree, SddManager, PSddManager, io
+
+from semantic_loss_pytorch.py3psdd import PSddManager, SddManager, Vtree, io
+
 
 # For numerical stability
 EPSILON = 1e-9
@@ -44,22 +44,30 @@ class SemanticLoss(_Loss):
     def __init__(self, sdd_file: str, vtree_file: str, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # instantiate the psdd
-        self.psdd = SemanticLoss._import_psdd(sdd_file, vtree_file)
+        self.psdd = self._import_psdd(sdd_file, vtree_file)
 
     def forward(
         self,
         logits: torch.FloatTensor = None,
         probabilities: torch.FloatTensor = None,
-        output_wmc:bool = False,
+        output_wmc: bool = False,
         output_wmc_per_sample: bool = False
     ) -> torch.FloatTensor:
         """
         Returns the semantic loss related to the instance of this class, using the `x` input.
         If input are logits, the sigmoid function is applied to the input.
         
-        :param x: input tensor that will be interpreted as probabilities or logits (input_are_logits=True)
-        :return: the weighted model count for the input tensor `x` with respect to the psdd
+        Args:
+            logits: input tensor that will be interpreted as logits
+                (a sigmoid activation function will turn them in probabilities)
+            probabilities: input tensor that will be interpreted as probabilities
+            output_wmc: whether to output weighted model counts
+            output_wmc_per_sample: whether to output weighted model counts for each sample in the batch
+
+        Returns:
+            the weighted model count for the input tensor logits or probabilites with respect to the psdd
         """
+
         if (logits is None) == (probabilities is None):
             raise ValueError("Only logits or probabilities can be provided, neither both nor none")
 
@@ -68,9 +76,8 @@ class SemanticLoss(_Loss):
             probabilities = torch.sigmoid(logits)
 
         # need to reshape as a 1d vector of variables for each sample, needed by psdd for the torch AC
-        batch_size, *other_dims = probabilities.size()
-        total_variables = reduce(lambda x, y: x * y, other_dims)
-        probs_as_vector = torch.reshape(probabilities, (batch_size, total_variables))
+        batch_size = probabilities.size(-1)
+        probs_as_vector = probabilities.reshape(batch_size, -1)
 
         wmc_per_sample = self.psdd.generate_pt_ac_v2(probs_as_vector)
         wmc = torch.mean(wmc_per_sample)

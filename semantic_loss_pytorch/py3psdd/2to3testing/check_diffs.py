@@ -1,6 +1,7 @@
 import os
 from subprocess import check_output
 
+
 for root, dirs, files in os.walk("."):
         for file in files:
             if file.endswith(".cnf"):

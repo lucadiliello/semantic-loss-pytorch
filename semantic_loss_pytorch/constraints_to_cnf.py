@@ -1,11 +1,13 @@
-import sys
-import re as regex
-import numpy as np
-import ast
-from sympy import *
-import sympy
-from sympy.parsing.sympy_parser import *
 import argparse
+import ast
+import re as regex
+import sys
+
+import numpy as np
+import sympy
+from sympy import to_cnf
+from sympy.parsing.sympy_parser import parse_expr
+
 
 """
 have to be splitting sympy parsing in multiple jobs because it can become very slow
@@ -43,8 +45,8 @@ class ConstraintsToCnf:
             The first non-comment line should be specifying the shape of the tensor in which the referred variables are.
             After that, all non-comment lines are assumed to be propositional logic constraints written in the sympy
             syntax. All these constraints (on different lines) are to be considered in an and relationship.
-            Variables must be specified similarly as if we were indexing a tensor with multiple dimensions, of the same shape
-            we specified earlier.
+            Variables must be specified similarly as if we were indexing a tensor with multiple dimensions, of the same
+            shape we specified earlier.
             This means that we can't refer to variables which have more "dimension" than the actual shape, and those
             indexing dimensions should respect the initially specified shape.
 
@@ -79,7 +81,7 @@ class ConstraintsToCnf:
         shape, constraints = ConstraintsToCnf._read_data(constraint_file)
 
         """
-        Stride for each dimension: 
+        Stride for each dimension:
         get the shape as a list and append 1
         invert it and make it into a np array
         compute the cumulative product
@@ -89,7 +91,7 @@ class ConstraintsToCnf:
         stride = np.array(list(np.cumprod(np.array((shape + [1])[::-1])))[::-1][1:])
         shape = np.array(shape)
         # note that this is the total number of variables in the mono dimensional array, not in the constraints
-        total_vars = np.cumprod(shape)[-1]
+        total_vars = np.prod(shape)
 
         """
         For the remaining items, that should be propositional algebra constraints,'and' them togheter.
@@ -110,7 +112,8 @@ class ConstraintsToCnf:
 
         # check variables for correctness (shape wise and name/format)
         for var in constraints_expression.atoms():
-            ConstraintsToCnf._assert_is_valid_variable(str(var), shape, stride, total_vars)
+            if not var.is_Boolean:
+                ConstraintsToCnf._assert_is_valid_variable(str(var), shape, stride, total_vars)
 
         # now that we have our constraints, convert them to CNF
         print("converting to cnf")
@@ -182,9 +185,11 @@ class ConstraintsToCnf:
             read the file as a string, split by newlines
             clean out "" (empty lines) and comments)
             """
-            data = list(filter(lambda x: x != "" and x[0] != "#", myfile.read().split("\n")))
-            # clean out white space
-            data = list(map(lambda x: regex.sub('\s+', ' ', x), data))
+            lines = [line.strip() for line in myfile.read().split("\n")]
+            data = list(filter(lambda x: x and not x.startswith("#"), lines))
+
+            # clean out multiple white spaces
+            data = list(map(lambda x: regex.sub(r'\s+', ' ', x), data))
 
             # check that the first non-comment and non-empty line is the shape
             shapestring = data[0]
@@ -192,8 +197,9 @@ class ConstraintsToCnf:
 
             # make sure what comes after looks like a list of ints
             shapestring = shapestring[6:]
-            assert regex.search("^\[(\s*[0-9]*\s*,)*\s*[0-9]*\s*\]$",
-                                shapestring), "%s is not a valid shape" % shapestring[6:]
+            assert regex.search(
+                r"^\[(\s*[0-9]*\s*,)*\s*[0-9]*\s*\]$", shapestring
+            ), "%s is not a valid shape" % shapestring
 
             # read it as a list of ints and obtain, and obtain the info we need about variables (total vars, stride etc)
             shape = ast.literal_eval(shapestring)
@@ -212,15 +218,20 @@ class ConstraintsToCnf:
         :param stride: Numpy array specifying the stride over each dimension.
         :param total_vars: Total number of variables (given by the shape).
         """
-        assert bool(regex.search("^X((_[0-9]+)|[0-9]+)(_[0-9]+)*$",
-                                 var)), "Variable '%s' does not conform to the supported syntax." % var
+        assert bool(
+            regex.search(r"^X((_[0-9]+)|[0-9]+)(_[0-9]+)*$", var)
+        ), "Variable '%s' does not conform to the supported syntax." % var
+
         # get all indexes as ints
-        items = list(map(lambda x: int(x), regex.findall("[0-9]+", var)))
+        items = list(map(lambda x: int(x), regex.findall(r"[0-9]+", var)))
 
         # specified indexes equal the number of dimensions
-        assert len(items) == len(
-            shape), "Number of indexes in %s is not the same as the number of dimensions specified in shape '%s'" % (
-            var, shape)
+        assert len(items) == len(shape), (
+            "Number of indexes in %s is not the same as the number of dimensions specified in shape '%s'" % (
+                var, shape
+            )
+        )
+
         # all indexes should be < the dimension they index
         for number, index_in_this_dim, dim in zip(list(range(len(items))), items, shape):
             assert index_in_this_dim < dim, "Index number %s '%s' in var '%s' should be < %s, given the shape %s" % (
@@ -261,24 +272,24 @@ class ConstraintsToCnf:
         :param output_file: Refer to expression_to_cnf.
         """
         # build a dict mapping the multi dim variable to single index var (X.1.2.3 -> Xi)
-        variables = [str(atom) for atom in cnf.atoms()]
+        variables = list(cnf.atoms())
         translate_dict = {}
         for var in variables:
+            var_name = str(var)
             # get all indexes as ints and compute the 1 dimensional index
-            items = list(map(lambda x: int(x), regex.findall("[0-9]+", var)))
-            index = ConstraintsToCnf._get_index(np.array(items), stride)
-            translate_dict[var] = str(index + 1)  # +1 because pysdd start from 1 and not 0
-        # make sure the number of found vars are the same as the original
-        assert len(variables) == len(translate_dict)
+            if not var.is_Boolean:
+                items = list(map(lambda x: int(x), regex.findall(r"[0-9]+", var_name)))
+                index = ConstraintsToCnf._get_index(np.array(items), stride)
+                translate_dict[var_name] = str(index + 1)  # +1 because pysdd start from 1 and not 0
 
         # reduce clauses to list (ands) of lists (clauses)
         clauses = str(cnf)
         # translate vars as if having a single dimension
-        clauses = regex.sub("X((_[0-9]+)|[0-9]+)(_[0-9]+)*", lambda x: translate_dict[x.group(0)], clauses)
+        clauses = regex.sub(r"X((_[0-9]+)|[0-9]+)(_[0-9]+)*", lambda x: translate_dict[x.group(0)], clauses)
         # remove whitespace, ~ into -, remove parenthesis
-        clauses = regex.sub(" ", "", clauses)
-        clauses = regex.sub("~", "-", clauses)
-        clauses = regex.sub("\(|\)", "", clauses)
+        clauses = regex.sub(r" ", "", clauses)
+        clauses = regex.sub(r"~", "-", clauses)
+        clauses = regex.sub(r"\(|\)", "", clauses)
         # split clauses
         clauses = clauses.split("&")
         # split literals

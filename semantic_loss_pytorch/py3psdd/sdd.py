@@ -1,4 +1,5 @@
 import heapq
+
 from .data import InstMap
 
 
@@ -537,7 +538,7 @@ class NormalizedSddNode(SddNode):
             node.data = data
 
         return data
-    
+
     def generate_pt_ac_v2(self, trueprobs, clear_data=True):
         """
         Generates a pytorch arithmetic circuit according to the weighted model counting procedure for this SDD.
@@ -546,10 +547,10 @@ class NormalizedSddNode(SddNode):
 
         # Going to need tensorflow for this, but not for the rest of the project, so import here
         import torch
-        true_tensor = torch.ones(1)
-        false_tensor = torch.zeros(1)
+        true_tensor = torch.ones(1, device=trueprobs.device)
+        false_tensor = torch.zeros(1, device=trueprobs.device)
 
-        for index, node in enumerate(self.as_list(clear_data=clear_data)):
+        for node in self.as_list(clear_data=clear_data):
             if node.is_false():
                 data = false_tensor
             elif node.is_true():

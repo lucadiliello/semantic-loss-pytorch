@@ -21,14 +21,15 @@ __bibtex__ = ("@inproceedings{KisaVCD14,\n"
               "year = {2014}\n"
               "}")
 
-from .vtree import Vtree
-from .manager import SddManager,PSddManager
-from .sdd import SddNode
-from .psdd import PSddNode
-from .prior import Prior,DirichletPrior,UniformSmoothing
-from .data import DataSet,Inst,InstMap
-from .timer import Timer
 from . import io
+from .data import DataSet, Inst, InstMap
+from .manager import PSddManager, SddManager
+from .prior import DirichletPrior, Prior, UniformSmoothing
+from .psdd import PSddNode
+from .sdd import SddNode
+from .timer import Timer
+from .vtree import Vtree
+
 
 __all__ = ["Vtree","SddManager","PSddManager", \
            "SddNode","PSddNode", \

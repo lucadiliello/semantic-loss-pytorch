@@ -1,5 +1,6 @@
 import setuptools
 
+
 with open('README.md') as f:
     readme = f.read()
 
@@ -18,7 +19,7 @@ setuptools.setup(
     python_requires='>=3.6',
     license=license,
     packages=setuptools.find_packages(),
-    install_requires=["sympy", "torch", "pytest"],
+    install_requires=["sympy", "torch", "pytest", "numpy", "torch"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v2.0",

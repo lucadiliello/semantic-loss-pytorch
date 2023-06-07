@@ -1,6 +1,7 @@
 import sys
 import time
 
+
 class Timer:
     """Utility for timing code via Python's "with" statement.
 

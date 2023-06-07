@@ -1,6 +1,7 @@
 import math
 import random
 
+
 class Prior:
     """Abstract parameter prior class.
 

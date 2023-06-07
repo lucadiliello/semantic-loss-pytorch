@@ -1,7 +1,8 @@
 import os
-from os import path
-import tensorflow as tf
 import sys
+from os import path
+
+import tensorflow as tf
 
 
 def write_tf_graph(vtree_filename, sdd_filename, numvars, version):
@@ -40,13 +41,11 @@ if __name__ == '__main__':
     print("Attemptin import of pysdd (python %s)" % version)
     if version == 3:
         import py3psdd
-        from py3psdd import Timer,Vtree,SddManager,SddNode, PSddManager
-        from py3psdd import io
+        from py3psdd import PSddManager, SddManager, SddNode, Timer, Vtree, io
         print("Imported %s" % py3psdd.__name__)
     elif version == 2:
         import pypsdd
-        from pypsdd import Timer,Vtree,SddManager,SddNode, PSddManager
-        from pypsdd import io
+        from pypsdd import PSddManager, SddManager, SddNode, Timer, Vtree, io
         print("Imported %s" % pypsdd.__name__)
     else:
         print("Python runtime version not recognized (must be 2 or 3)")
